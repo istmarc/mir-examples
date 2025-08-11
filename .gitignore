@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/mir-examples
+mir-examples.so
+mir-examples.dylib
+mir-examples.dll
+libmir-examples.a
+mir-examples.a
+mir-examples.lib
+mir-examples-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

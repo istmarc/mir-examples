@@ -1,0 +1,6 @@
+name "mir-examples"
+description "Examples using mir"
+authors "Marc"
+copyright "Copyright © 2025, Marc"
+license "MIT"
+dependency "mir" version="~>3.2.3"
