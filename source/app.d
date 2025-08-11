@@ -1,6 +1,6 @@
 import mir.ndslice;
 import numir;
-import mir.blas: gemv, gemm;
+//import mir.blas: gemv, gemm;
 import std.stdio;
 
 void main()
@@ -132,10 +132,10 @@ void main()
 
 	writeln("Matrix vector multiplication");
 	{
-		//auto a = iota([2,2], 1).as!float();
-		//auto b = iota([2], 1).as!float();
-		auto a = empty!float(2, 2);
-		auto b = empty!float(2);
+		auto a = iota([2,2], 1).as!float();
+		auto b = iota([2], 1).as!float();
+		//auto a = empty!float(2, 2);
+		//auto b = empty!float(2);
 		auto c = empty!float(2);
 		//gemv!float(1.0f, a, b, 0.0f, c);
 		writeln(c);
