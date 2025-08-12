@@ -1,7 +1,9 @@
 import mir.ndslice;
 import numir;
-//import mir.blas: gemv, gemm;
+import mir.blas;
+
 import std.stdio;
+import std.array;
 
 void main()
 {
@@ -21,6 +23,9 @@ void main()
 		writeln("a[0,1] = ", a[0, 1]);
 		writeln("a[1,0] = ", a[1, 0]);
 		writeln("a[1,1] = ", a[1, 1]);
+		writeln("access elements in row major order");
+		for (size_t i = 0; i < a.elementCount; i++)
+			writeln(a.ptr[i]);
 	}
 
 	writeln("Vector");
@@ -132,21 +137,19 @@ void main()
 
 	writeln("Matrix vector multiplication");
 	{
-		auto a = iota([2,2], 1).as!float();
-		auto b = iota([2], 1).as!float();
-		//auto a = empty!float(2, 2);
-		//auto b = empty!float(2);
+		const auto a = [1.0f, 2.0f, 3.0f, 4.0f].sliced(2, 2);
+		const auto b = [1.0f, 2.0f].sliced(2);
 		auto c = empty!float(2);
-		//gemv!float(1.0f, a, b, 0.0f, c);
+		gemv!float(1.0f, a, b, 0.0f, c);
 		writeln(c);
 	}
 
 	writeln("Matrix matrix multiplication");
 	{
-		auto a = iota([2, 2], 1).as!float();
-		auto b = iota([2, 2], 1).as!float();
+		auto a = [1.0f, 2.0f, 3.0f, 4.0f].sliced(2, 2);
+		auto b = [1.0f, 2.0f, 3.0f, 4.0f].sliced(2, 2);
 		auto c = empty!float(2, 2);
-		//gemm!float(1.0f, a, b, 0.0f, c);
+		gemm!float(1.0f, a, b, 0.0f, c);
 		writeln(c);
 	}
 

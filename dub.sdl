@@ -6,3 +6,5 @@ license "MIT"
 dependency "numir" version="~>2.0.6"
 dependency "mir" version="~>3.2.3"
 dependency "mir-blas" version="~>1.1.17"
+subConfiguration "mir-blas" "twolib"
+
