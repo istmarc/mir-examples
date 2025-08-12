@@ -153,4 +153,36 @@ void main()
 		writeln(c);
 	}
 
+	writeln("Fonctions defined on mir ndslice");
+	writeln("Slice are of type Slice!(const(T)*, rank) or Slice!(T*, rank)");
+	{
+		void print(T)(Slice!(const(T)*) arr) {
+			writeln(arr);
+		}
+		auto a = [1.0f, 2.0f].sliced(2);
+		print!float(a);
+		print(a);
+	}
+
+	writeln("Fonctions defined on matrix");
+	{
+		void print(T)(Slice!(const(T)*, 2) arr){
+			writeln(arr);
+		}
+		auto a = [1.0f, 2.0f, 3.0f, 4.0f].sliced(2, 2);
+		print!float(a);
+		print(a);
+	}
+
+
+	writeln("Fonctions defined on tensors");
+	{
+		void print(T)(Slice!(const(T)*, 3) arr){
+			writeln(arr);
+		}
+		auto a = [1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f].sliced(2, 2, 2);
+		print!float(a);
+		print(a);
+	}
+
 }
