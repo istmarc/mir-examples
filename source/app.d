@@ -7,7 +7,6 @@ import std.array;
 
 void main()
 {
-
 	writeln("Uninitialized arrays");
 	{
 		auto a = uninitSlice!float(3, 3);
@@ -184,5 +183,15 @@ void main()
 		print!float(a);
 		print(a);
 	}
+
+   writeln("Function defined on different mir slices types");
+   {
+      void print(T, SliceKind Kind)(Slice!(T*, 1, Kind) arr) {
+         writeln(arr);
+      }
+      auto a = [1.0f, 2.0f, 3.0f, 4.0f].sliced(2, 2);
+      print(a[0, 0..$]);
+      print(a[0..$, 0]);
+   }
 
 }
